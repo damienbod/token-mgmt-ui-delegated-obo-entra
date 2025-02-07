@@ -23,6 +23,10 @@ This demo shows how to implement the On Behalf Of flow between an Microsoft Entr
 
 https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
 
+## ASP.NET Core OBO using Micrsoft Graph (delegated)
+
+https://github.com/damienbod/bff-aspnetcore-angular
+
 ## History
 
 - 2025-02-07 Initial version
