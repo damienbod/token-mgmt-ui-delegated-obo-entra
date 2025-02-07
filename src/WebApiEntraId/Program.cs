@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.OpenApi;
+using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using WebApiEntraId;
@@ -35,17 +37,20 @@ builder.Services.AddSecurityHeaderPolicies()
         }
     });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        // .RequireClaim("email") // disabled this to test with users that have no email (no license added)
+        .Build();
+    options.Filters.Add(new AuthorizeFilter(policy));
+});
 
-builder.Services.AddAuthentication()
-    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-    {
-        var oauthConfig = builder.Configuration.GetSection("ProfileApiConfigurations");
-        options.Authority = oauthConfig["Authority"];
-        options.Audience = oauthConfig["Audience"];
-        options.MapInboundClaims = false;
-        options.TokenValidationParameters.ValidTypes = ["at+jwt"];
-    });
+builder.Services.AddHttpClient();
+builder.Services.AddOptions();
+
+builder.Services.AddMicrosoftIdentityWebApiAuthentication(
+    builder.Configuration, "AzureAd");
 
 builder.Services.AddOpenApi(options =>
 {
@@ -107,9 +112,9 @@ internal sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvi
         }
         document.Info = new()
         {
-            Title = "Duende API Bearer scheme",
+            Title = "Microsoft Entra ID delegated API Bearer scheme",
             Version = "v1",
-            Description = "Duende API"
+            Description = "Microsoft Entra ID delegated API"
         };
     }
 }
