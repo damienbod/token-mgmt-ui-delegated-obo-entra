@@ -1,62 +1,53 @@
-﻿using IdentityModel.Client;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Identity.Web;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace WebApiEntraIdObo.WebApiEntraId;
 
 public class WebApiDownstreamService
 {
-    private readonly IOptions<WebApiDownstreamConfig> _webApiDuendeConfig;
     private readonly IHttpClientFactory _clientFactory;
-    private readonly ApiTokenCacheClient _apiTokenClient;
+    private readonly ITokenAcquisition _tokenAcquisition;
+    private readonly IConfiguration _configuration;
 
-    public WebApiDownstreamService(
-        IOptions<WebApiDownstreamConfig> webApiDuendeConfig,
-        IHttpClientFactory clientFactory,
-        ApiTokenCacheClient apiTokenClient)
+    public WebApiDownstreamService(IHttpClientFactory clientFactory,
+        ITokenAcquisition tokenAcquisition,
+        IConfiguration configuration)
     {
-        _webApiDuendeConfig = webApiDuendeConfig;
         _clientFactory = clientFactory;
-        _apiTokenClient = apiTokenClient;
+        _tokenAcquisition = tokenAcquisition;
+        _configuration = configuration;
     }
 
-    public async Task<string> GetWebApiDuendeDataAsync(string entraIdAccessToken)
+    public async Task<string?> GetApiDataAsync()
     {
-        try
+        var client = _clientFactory.CreateClient();
+
+        // user_impersonation access_as_user access_as_application .default
+        var scope = _configuration["WebApiEntraIdObo:ScopeForAccessToken"];
+        if (scope == null) throw new ArgumentNullException(nameof(scope));
+
+        var uri = _configuration["WebApiEntraIdObo:ApiBaseAddress"];
+        if (uri == null) throw new ArgumentNullException(nameof(uri));
+
+        var accessToken = await _tokenAcquisition
+            .GetAccessTokenForUserAsync([scope]);
+
+        client.DefaultRequestHeaders.Authorization
+            = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        client.BaseAddress = new Uri(uri);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        var response = await client.GetAsync("weatherforecast");
+        if (response.IsSuccessStatusCode)
         {
-            var client = _clientFactory.CreateClient();
+            var data = await JsonSerializer.DeserializeAsync<string>(
+                await response.Content.ReadAsStreamAsync());
 
-            client.BaseAddress = new Uri(_webApiDuendeConfig.Value.ApiBaseAddress);
-
-            var accessToken = await _apiTokenClient.GetApiTokenOauthGrantTokenExchange
-            (
-                _webApiDuendeConfig.Value.ClientId,
-                _webApiDuendeConfig.Value.Audience,
-                _webApiDuendeConfig.Value.ScopeForAccessToken,
-                _webApiDuendeConfig.Value.ClientSecret,
-                entraIdAccessToken
-            );
-
-            client.SetBearerToken(accessToken);
-
-            var response = await client.GetAsync("api/profiles/photo");
-            if (response.IsSuccessStatusCode)
-            {
-                var data = await response.Content.ReadAsStringAsync();
-
-                if (data != null)
-                {
-                    return data;
-                }
-
-                return string.Empty;
-            }
-
-            throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
+            return data;
         }
-        catch (Exception e)
-        {
-            throw new ApplicationException($"Exception {e}");
-        }
+
+        throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
     }
 }

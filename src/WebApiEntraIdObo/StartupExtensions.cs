@@ -18,15 +18,12 @@ internal static class StartupExtensions
         var configuration = builder.Configuration;
 
         services.AddTransient<WebApiDownstreamService>();
-        services.AddTransient<ApiTokenCacheClient>();
-        services.AddHttpClient();
-        services.Configure<WebApiDownstreamConfig>(configuration.GetSection("WebApiDownstream"));
+        builder.Services.AddHttpClient();
+        builder.Services.AddOptions();
 
-        services.AddOptions();
+        builder.Services.AddDistributedMemoryCache();
 
-        services.AddDistributedMemoryCache();
-
-        services.AddMicrosoftIdentityWebApiAuthentication(configuration, "EntraId")
+        builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration, "EntraID")
             .EnableTokenAcquisitionToCallDownstreamApi()
             .AddDistributedTokenCaches();
 

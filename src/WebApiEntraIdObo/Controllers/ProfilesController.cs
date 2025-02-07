@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
-using Microsoft.Net.Http.Headers;
 using WebApiEntraIdObo.WebApiEntraId;
 
 namespace WebApiEntraIdObo.Controllers
@@ -22,17 +21,14 @@ namespace WebApiEntraIdObo.Controllers
 
         [Produces(typeof(string))]
         [HttpGet("photo")]
-        public async Task<string> Get()
+        public async Task<string?> Get()
         {
             var scopeRequiredByApi = new string[] { "access_as_user" };
             HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
 
-            var entraIdBearerToken = Request.Headers[HeaderNames.Authorization]
-                .ToString().Replace("Bearer ", string.Empty);
+            var dataWebApi = await _apiService.GetApiDataAsync();
 
-            var dataWebApiDuende = await _apiService.GetWebApiDuendeDataAsync(entraIdBearerToken);
-
-            return dataWebApiDuende;
+            return dataWebApi;
         }
     }
 }
