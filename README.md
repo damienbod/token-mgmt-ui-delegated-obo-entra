@@ -17,6 +17,8 @@
 
 ## Links
 
+https://damienbod.com/2024/02/12/using-blob-storage-from-asp-net-core-with-entra-id-authentication/
+
 https://damienbod.com/2023/01/09/implement-the-oauth-2-0-token-exchange-delegated-flow-between-an-azure-ad-api-and-an-api-protected-using-openiddict/
 
 https://github.com/damienbod/OAuthGrantExchangeOidcDownstreamApi
