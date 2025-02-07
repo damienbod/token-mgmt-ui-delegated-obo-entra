@@ -4,6 +4,13 @@
 
 ![ASP.NET Core access token management](https://github.com/damienbod/token-mgmt-ui-delegated-obo-entra/blob/main/images/context.png)
 
+## Blogs in this series
+
+- [ASP.NET Core user delegated access token management](https://damienbod.com/2025/01/15/asp-net-core-user-delegated-access-token-management/)
+- [ASP.NET Core user application access token management](https://damienbod.com/2025/01/20/asp-net-core-user-application-access-token-management/)
+- [ASP.NET Core delegated OAuth token exchange access token management](https://damienbod.com)
+- [ASP.NET Core delegated Microsoft OBO access token management (Entra only)](https://damienbod.com)
+
 ## History
 
 - 2025-02-07 Initial version
