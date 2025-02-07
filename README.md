@@ -11,6 +11,18 @@
 - [ASP.NET Core delegated OAuth token exchange access token management](https://damienbod.com)
 - [ASP.NET Core delegated Microsoft OBO access token management (Entra only)](https://damienbod.com)
 
+## Microsoft OBO with Âzure Blob Storage (delegated)
+
+ASP.NET Core Razor page using Azure Blob Storage to upload download files securely using OAuth and Open ID Connect
+
+https://github.com/damienbod/AspNetCoreEntraIdBlobStorage
+
+## Microsoft OBO with OpenIddict (delegated)
+
+This demo shows how to implement the On Behalf Of flow between an Microsoft Entra ID protected API and an API protected using OpenIddict.
+
+https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
+
 ## History
 
 - 2025-02-07 Initial version
