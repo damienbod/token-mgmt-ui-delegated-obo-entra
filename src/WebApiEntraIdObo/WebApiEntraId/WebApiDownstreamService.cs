@@ -39,7 +39,7 @@ public class WebApiDownstreamService
         client.BaseAddress = new Uri(uri);
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-        var response = await client.GetAsync("weatherforecast");
+        var response = await client.GetAsync("api/profiles/photo");
         if (response.IsSuccessStatusCode)
         {
             var data = await JsonSerializer.DeserializeAsync<string>(
