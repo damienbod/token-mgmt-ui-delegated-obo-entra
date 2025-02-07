@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "WebApiEntraId": {
+    "WebApiEntraIdObo": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "",
