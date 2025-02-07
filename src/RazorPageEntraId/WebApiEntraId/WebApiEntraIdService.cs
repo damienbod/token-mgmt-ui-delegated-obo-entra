@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace RazorPageEntraId;
+namespace RazorPageEntraId.WebApiEntraId;
 
 public class WebApiEntraIdService
 {
@@ -27,10 +27,10 @@ public class WebApiEntraIdService
     {
         var client = _clientFactory.CreateClient();
 
-        var scope = _configuration["WebApiEntraId:ScopeForAccessToken"];
+        var scope = _configuration["WebApiEntraID:ScopeForAccessToken"];
         var accessToken = await _tokenAcquisition.GetAccessTokenForUserAsync([scope!]);
 
-        client.BaseAddress = new Uri(_configuration["WebApiEntraId:ApiBaseAddress"]!);
+        client.BaseAddress = new Uri(_configuration["WebApiEntraID:ApiBaseAddress"]!);
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

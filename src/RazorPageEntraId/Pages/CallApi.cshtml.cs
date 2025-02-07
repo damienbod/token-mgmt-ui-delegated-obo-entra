@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
+using RazorPageEntraId.WebApiEntraId;
 using System.Threading.Tasks;
 
 namespace RazorPageEntraId.Pages;
