@@ -25,6 +25,8 @@ https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
 
 ## ASP.NET Core OBO using Micrsoft Graph (delegated)
 
+Backend for frontend security using Angular Standalone (nx) and ASP.NET Core backend using Micrsoft Graph
+
 https://github.com/damienbod/bff-aspnetcore-angular
 
 ## History
