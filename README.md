@@ -53,6 +53,8 @@ https://www.rfc-editor.org/rfc/rfc6749#section-5.2
 
 https://github.com/blowdart/idunno.Authentication/tree/dev/src/idunno.Authentication.Basic
 
+https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-on-behalf-of-flow
+
 ## Standards
 
 [JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519)
