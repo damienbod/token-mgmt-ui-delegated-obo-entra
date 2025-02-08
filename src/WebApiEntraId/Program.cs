@@ -50,7 +50,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddOptions();
 
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(
-    builder.Configuration, "AzureAd");
+    builder.Configuration, "EntraID");
 
 builder.Services.AddOpenApi(options =>
 {

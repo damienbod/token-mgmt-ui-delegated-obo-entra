@@ -17,7 +17,7 @@ internal static class StartupExtensions
         var services = builder.Services;
         var configuration = builder.Configuration;
 
-        services.AddTransient<WebApiDownstreamService>();
+        builder.Services.AddTransient<WebApiDownstreamService>();
         builder.Services.AddHttpClient();
         builder.Services.AddOptions();
 
