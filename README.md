@@ -1,4 +1,6 @@
-# token-mgmt-ui-delegated-obo-entra
+# Token Management using Entra ID and Micrsoft On-Behalf-Of flow
+
+ASP.NET Core Token Management using Microsoft On-Behalf-Of flow (delegated tokens)
 
 ## Setup
 
