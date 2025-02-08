@@ -1,4 +1,4 @@
-# Token Management using Entra ID and Micrsoft On-Behalf-Of flow
+# Token Management using Entra ID and Microsoft On-Behalf-Of flow
 
 ASP.NET Core Token Management using Microsoft On-Behalf-Of flow (delegated tokens)
 
@@ -13,7 +13,7 @@ ASP.NET Core Token Management using Microsoft On-Behalf-Of flow (delegated token
 - [ASP.NET Core delegated OAuth token exchange access token management](https://damienbod.com)
 - [ASP.NET Core delegated Microsoft OBO access token management (Entra only)](https://damienbod.com)
 
-## Further examples of the Micrsoft On-Behalf-Of flow
+## Further examples of the Microsoft On-Behalf-Of flow
 
 ### Microsoft OBO with Azure Blob Storage (delegated)
 
@@ -27,9 +27,9 @@ This demo shows how to implement the On-Behalf-Of flow between an Microsoft Entr
 
 https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
 
-### ASP.NET Core OBO using Micrsoft Graph (delegated)
+### ASP.NET Core OBO using Microsoft Graph (delegated)
 
-Backend for frontend security using Angular Standalone (nx) and ASP.NET Core backend using Micrsoft Graph
+Backend for frontend security using Angular Standalone (nx) and ASP.NET Core backend using Microsoft Graph
 
 https://github.com/damienbod/bff-aspnetcore-angular
 
