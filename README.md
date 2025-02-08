@@ -21,7 +21,7 @@ https://github.com/damienbod/AspNetCoreEntraIdBlobStorage
 
 ## Microsoft OBO with OpenIddict (delegated)
 
-This demo shows how to implement the On Behalf Of flow between an Microsoft Entra ID protected API and an API protected using OpenIddict.
+This demo shows how to implement the On-Behalf-Of flow between an Microsoft Entra ID protected API and an API protected using OpenIddict.
 
 https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
 
