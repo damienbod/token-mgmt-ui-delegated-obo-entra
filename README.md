@@ -13,19 +13,21 @@ ASP.NET Core Token Management using Microsoft On-Behalf-Of flow (delegated token
 - [ASP.NET Core delegated OAuth token exchange access token management](https://damienbod.com)
 - [ASP.NET Core delegated Microsoft OBO access token management (Entra only)](https://damienbod.com)
 
-## Microsoft OBO with Âzure Blob Storage (delegated)
+## Further examples of the Micrsoft On-Behalf-Of flow
+
+### Microsoft OBO with Azure Blob Storage (delegated)
 
 ASP.NET Core Razor page using Azure Blob Storage to upload download files securely using OAuth and Open ID Connect
 
 https://github.com/damienbod/AspNetCoreEntraIdBlobStorage
 
-## Microsoft OBO with OpenIddict (delegated)
+### Microsoft OBO with OpenIddict (delegated)
 
 This demo shows how to implement the On-Behalf-Of flow between an Microsoft Entra ID protected API and an API protected using OpenIddict.
 
 https://github.com/damienbod/OnBehalfFlowOidcDownstreamApi
 
-## ASP.NET Core OBO using Micrsoft Graph (delegated)
+### ASP.NET Core OBO using Micrsoft Graph (delegated)
 
 Backend for frontend security using Angular Standalone (nx) and ASP.NET Core backend using Micrsoft Graph
 
