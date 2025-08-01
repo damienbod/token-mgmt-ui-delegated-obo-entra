@@ -35,6 +35,7 @@ https://github.com/damienbod/bff-aspnetcore-angular
 
 ## History
 
+- 2025-08-01 Updated packages
 - 2025-03-25 Updated packages
 - 2025-03-01 Updated packages
 - 2025-02-07 Initial version
