@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Serilog;
 using WebApiEntraIdObo.WebApiEntraId;
 
@@ -27,41 +27,19 @@ internal static class StartupExtensions
             .EnableTokenAcquisitionToCallDownstreamApi()
             .AddDistributedTokenCaches();
 
-        services.AddSwaggerGen(c =>
+        builder.Services.AddOpenApi(options =>
         {
-            // add JWT Authentication
-            var securityScheme = new OpenApiSecurityScheme
-            {
-                Name = "JWT Authentication",
-                Description = "Enter JWT Bearer token **_only_**",
-                In = ParameterLocation.Header,
-                Type = SecuritySchemeType.Http,
-                Scheme = "bearer", // must be lower case
-                BearerFormat = "JWT",
-                Reference = new OpenApiReference
-                {
-                    Id = JwtBearerDefaults.AuthenticationScheme,
-                    Type = ReferenceType.SecurityScheme
-                }
-            };
-            c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {securityScheme, Array.Empty<string>()}
-            });
-
-            c.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = "Entra ID APP",
-                Version = "v1",
-                Description = "Entra ID API",
-                Contact = new OpenApiContact
-                {
-                    Name = "damienbod",
-                    Email = string.Empty,
-                    Url = new Uri("https://damienbod.com/"),
-                },
-            });
+            //options.UseTransformer((document, context, cancellationToken) =>
+            //{
+            //    document.Info = new()
+            //    {
+            //        Title = "My API",
+            //        Version = "v1",
+            //        Description = "API for Damien"
+            //    };
+            //    return Task.CompletedTask;
+            //});
+            options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
         });
 
         services.AddControllers(options =>
@@ -93,13 +71,6 @@ internal static class StartupExtensions
             app.UseHsts();
         }
 
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Entra ID API");
-            c.RoutePrefix = string.Empty;
-        });
-
         app.UseHttpsRedirection();
 
         app.UseRouting();
@@ -109,6 +80,17 @@ internal static class StartupExtensions
 
         app.MapControllers();
 
+        //app.MapOpenApi(); // /openapi/v1.json
+        app.MapOpenApi("/openapi/v1/openapi.json");
+        //app.MapOpenApi("/openapi/{documentName}/openapi.json");
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/openapi/v1/openapi.json", "v1");
+            });
+        }
         return app;
     }
 }
