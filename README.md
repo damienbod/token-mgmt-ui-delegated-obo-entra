@@ -1,5 +1,7 @@
 # Token Management using Entra ID and Microsoft On-Behalf-Of flow
 
+[![.NET](https://github.com/damienbod/token-mgmt-ui-delegated-obo-entra/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/token-mgmt-ui-delegated-obo-entra/actions/workflows/dotnet.yml)
+
 ASP.NET Core Token Management using Microsoft On-Behalf-Of flow (delegated tokens)
 
 ## Setup
