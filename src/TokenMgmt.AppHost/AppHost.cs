@@ -1,9 +1,18 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddDotnetProject("web-api-entraidobo", "../WebApiEntraIdObo/WebApiEntraIdObo.csproj");
+var webApiEntraId = builder.AddDotnetProject("web-api-entraid", "../WebApiEntraId/WebApiEntraId.csproj")
+    .WithExternalHttpEndpoints();
 
-builder.AddDotnetProject("web-api-entraid", "../WebApiEntraId/WebApiEntraId.csproj");
+var webApiEntraIdObo = builder.AddDotnetProject("web-api-entraidobo", "../WebApiEntraIdObo/WebApiEntraIdObo.csproj")
+    .WithReference(webApiEntraId)
+    .WaitFor(webApiEntraId)
+    .WithExternalHttpEndpoints();
 
-builder.AddDotnetProject("razor-page-entraid", "../RazorPageEntraId/RazorPageEntraId.csproj");
+builder.AddDotnetProject("razor-page-entraid", "../RazorPageEntraId/RazorPageEntraId.csproj")
+    .WithReference(webApiEntraId)
+    .WithReference(webApiEntraIdObo)
+    .WaitFor(webApiEntraId)
+    .WaitFor(webApiEntraIdObo)
+    .WithExternalHttpEndpoints();
 
 builder.Build().Run();
