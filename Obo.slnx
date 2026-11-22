@@ -5,4 +5,6 @@
   <Project Path="src/RazorPageEntraId/RazorPageEntraId.csproj" />
   <Project Path="src/WebApiEntraId/WebApiEntraId.csproj" />
   <Project Path="src/WebApiEntraIdObo/WebApiEntraIdObo.csproj" />
+  <Project Path="TokenMgmt.AppHost/TokenMgmt.AppHost.csproj" Id="ed8f3340-690e-4cad-b96f-5cd9f620631a" />
+  <Project Path="TokenMgmt.ServiceDefaults/TokenMgmt.ServiceDefaults.csproj" Id="a7715197-7eb9-4a45-b2ad-f62ac193d4cf" />
 </Solution>
