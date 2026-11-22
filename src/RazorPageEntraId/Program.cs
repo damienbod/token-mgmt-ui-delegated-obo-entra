@@ -10,6 +10,8 @@ using RazorPageEntraId.WebApiEntraId;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddTransient<WebApiEntraIdService>();
 builder.Services.AddHttpClient();
 
@@ -42,6 +44,8 @@ builder.Services.AddServerSideBlazor()
     .AddMicrosoftIdentityConsentHandler();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

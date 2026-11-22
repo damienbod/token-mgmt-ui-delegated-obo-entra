@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\RazorPageEntraId\RazorPageEntraId.csproj" />
-    <ProjectReference Include="..\src\WebApiEntraIdObo\WebApiEntraIdObo.csproj" />
-    <ProjectReference Include="..\src\WebApiEntraId\WebApiEntraId.csproj" />
+    <ProjectReference Include="..\RazorPageEntraId\RazorPageEntraId.csproj" />
+    <ProjectReference Include="..\WebApiEntraIdObo\WebApiEntraIdObo.csproj" />
+    <ProjectReference Include="..\WebApiEntraId\WebApiEntraId.csproj" />
   </ItemGroup>
 
 </Project>

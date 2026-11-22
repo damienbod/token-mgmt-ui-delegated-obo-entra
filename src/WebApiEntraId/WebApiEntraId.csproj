@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TokenMgmt.ServiceDefaults\TokenMgmt.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\TokenMgmt.ServiceDefaults\TokenMgmt.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>
