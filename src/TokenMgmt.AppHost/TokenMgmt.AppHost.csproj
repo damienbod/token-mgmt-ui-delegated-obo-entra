@@ -13,10 +13,4 @@
     <PackageReference Include="Aspire.Hosting.Dotnet" Version="17.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RazorPageEntraId\RazorPageEntraId.csproj" />
-    <ProjectReference Include="..\WebApiEntraIdObo\WebApiEntraIdObo.csproj" />
-    <ProjectReference Include="..\WebApiEntraId\WebApiEntraId.csproj" />
-  </ItemGroup>
-
 </Project>
