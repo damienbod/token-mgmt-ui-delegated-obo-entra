@@ -36,7 +36,7 @@ Backend for frontend security using Angular Standalone (nx) and ASP.NET Core bac
 https://github.com/damienbod/bff-aspnetcore-angular
 
 ## History
-
+- 2026-11-22 .NET 11
 - 2026-10-10 Updated packages
 - 2025-12-01 .NET 10
 - 2025-09-27 Updated packages
