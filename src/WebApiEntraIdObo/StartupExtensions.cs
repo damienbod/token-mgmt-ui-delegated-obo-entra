@@ -14,7 +14,6 @@ internal static class StartupExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        var services = builder.Services;
         var configuration = builder.Configuration;
 
         builder.Services.AddTransient<WebApiDownstreamService>();
@@ -42,7 +41,7 @@ internal static class StartupExtensions
             options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
         });
 
-        services.AddControllers(options =>
+        builder.Services.AddControllers(options =>
         {
             var policy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()

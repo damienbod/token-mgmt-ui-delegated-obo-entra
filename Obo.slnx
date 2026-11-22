@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="src/RazorPageEntraId/RazorPageEntraId.csproj" />
+  <Project Path="src/WebApiEntraId/WebApiEntraId.csproj" />
+  <Project Path="src/WebApiEntraIdObo/WebApiEntraIdObo.csproj" />
+</Solution>
