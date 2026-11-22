@@ -9,6 +9,8 @@ using WebApiEntraId;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Open up security restrictions to allow this to work
 // Not recommended in production
 var deploySwaggerUI = builder.Configuration.GetValue<bool>("DeploySwaggerUI");
@@ -68,6 +70,8 @@ builder.Services.AddOpenApi(options =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.UseSecurityHeaders();
 

@@ -21,4 +21,8 @@
     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="5.0.1" />  
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TokenMgmt.ServiceDefaults\TokenMgmt.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

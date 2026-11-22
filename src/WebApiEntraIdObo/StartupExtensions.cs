@@ -16,6 +16,8 @@ internal static class StartupExtensions
     {
         var configuration = builder.Configuration;
 
+        builder.AddServiceDefaults();
+
         builder.Services.AddTransient<WebApiDownstreamService>();
         builder.Services.AddHttpClient();
         builder.Services.AddOptions();
@@ -57,6 +59,8 @@ internal static class StartupExtensions
     {
         IdentityModelEventSource.ShowPII = true;
         JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+        app.MapDefaultEndpoints();
 
         app.UseSerilogRequestLogging();
 
